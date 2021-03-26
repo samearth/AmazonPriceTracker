@@ -17,5 +17,4 @@ def get_link_data(url):
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     price = locale.atof(price)
     price = float(price)
-    print(price)
     return name,price
