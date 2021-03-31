@@ -68,7 +68,7 @@
 <div class="card text-center">
   <div class="card-header">
     {% if product.price_diff > 0 %} Price Raised
-    {% elif product.price_diff < 0%} Discounted 
+    {% elif product.price_diff < 0%} <p class="success">Discounted </p>
     {% else %} Same
     {% endif %}
   </div>
