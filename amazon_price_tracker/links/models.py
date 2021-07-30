@@ -1,5 +1,6 @@
 from django.db import models
 from .utils import get_link_data
+from django.core.mail import send_mail
 # Create your models here.
 class Link(models.Model):
     name = models.CharField(max_length=200 , blank=True)
@@ -20,6 +21,22 @@ class Link(models.Model):
         name , price = get_link_data(self.url)
         old_price = self.current_price
         if self.current_price:
+            if(price>old_price):
+                send_mail(
+                'Hurry! Rates are Increasing',
+                'Hey , Your Products rate has increased. Check out your account to Know More',
+                'ssamarth1201@gmail.com',
+                ['2018219@iiitdmj.ac.in'],
+                fail_silently=False,
+            )
+            if(price<old_price):
+                send_mail(
+                'Hurry! Rates are Decreasing',
+                'Hey , Your Products rate has decreased. Check out your account to Know More',
+                'ssamarth1201@gmail.com',
+                ['2018219@iiitdmj.ac.in'],
+                fail_silently=False,
+            )
             if price!=old_price:
                 diff = price-old_price
                 self.price_diff = round(diff , 2)

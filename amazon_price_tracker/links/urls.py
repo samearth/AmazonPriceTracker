@@ -15,10 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from . import views
+from . import views 
+from .views import update_prices
+import threading
+
+_thread_locals = threading.local()
+
+def get_current_request():
+    print('hi')
+    return getattr(_thread_locals, 'request', None)
 
 urlpatterns = [
     path('',views.home , name="home"),
     path('delete/<pk>/' , views.LinkDeleteView.as_view() , name="delete"),
     path('update/' , views.update_prices , name="update")
 ]
+
+views.start_scheduler(get_current_request())
+
+
