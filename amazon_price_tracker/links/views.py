@@ -64,9 +64,6 @@ def run_continuously(self, interval=1):
 
 
 Scheduler.run_continuously = run_continuously
-# update_prices(get_current_request) # call foo
-# schedule.every(5).seconds.do(
-#         update_prices,get_current_request) 
 def start_scheduler(request):
     scheduler = Scheduler()
     scheduler.every(10).seconds.do(update_prices , request)
