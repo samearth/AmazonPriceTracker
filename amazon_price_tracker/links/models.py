@@ -18,7 +18,10 @@ class Link(models.Model):
         ordering = ('price_diff' , '-created')
 
     def save(self , *args , **kwargs):
-        name , price = get_link_data(self.url)
+        try:
+            name , price = get_link_data(self.url)
+        except:
+            return 
         old_price = self.current_price
         if self.current_price:
             if(price>old_price):

@@ -11,7 +11,6 @@ import threading
 _thread_locals = threading.local()
 
 def get_current_request():
-    print('hi')
     return getattr(_thread_locals, 'request', None)
 
 class ThreadLocals(object):
@@ -30,7 +29,6 @@ class LinkDeleteView(DeleteView):
 
 
 def update_prices(request):
-    print('hi')
     products = Link.objects.all()
     for product in products:
         product.save()
@@ -47,7 +45,6 @@ def run_continuously(self, interval=1):
     of one hour then your job won't be run 60 times at each interval but
     only once.
     """
-
     cease_continuous_run = threading.Event()
 
     class ScheduleThread(threading.Thread):
