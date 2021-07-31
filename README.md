@@ -1,6 +1,8 @@
 # AmazonPriceTracker
 
-Web App to track the prices of added Amazon products using web Scraping with Beautiful Soup . 
+Web App to track the prices of added Amazon products using web Scraping with Beautiful Soup .
+
+Scrapes the Links every 10 minutes as soon as the server is up and notifies on the email if any price change is noticed.
 
 
 How to Use 
